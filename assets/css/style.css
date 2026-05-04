@@ -195,11 +195,12 @@ table {
     min-width: 600px;
 }
 
-table thead {
+table thead th {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     position: sticky;
     top: 0;
+    z-index: 1;
 }
 
 table th,
@@ -208,9 +209,10 @@ table td {
     text-align: left;
     border-bottom: 1px solid #ddd;
     white-space: nowrap;
+    transition: background-color 0.2s ease-in-out;
 }
 
-table tr:hover {
+table tbody tr:hover td {
     background-color: #f5f5f5;
 }
 
