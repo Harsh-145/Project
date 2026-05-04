@@ -2,44 +2,39 @@
 session_start();
 include '../includes/config.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $conn->real_escape_string($_POST['username']);
-    $password = $conn->real_escape_string($_POST['password']);
-
-    $sql = "SELECT username FROM admins WHERE username = ? AND password = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $username, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $_SESSION['username'] = $username;
-        header("Location: dashboard.php");
-        exit();
-    } else {
-        $error = "Invalid Admin Username or Password!";
-    }
-
-    $stmt->close();
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("Location: login.html");
+    exit();
 }
 
-$conn->close();
-?>
+$username = trim($_POST['username'] ?? '');
+$password = trim($_POST['password'] ?? '');
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Result</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <?php if (isset($error)): ?>
-            <div class="alert alert-error"><?php echo htmlspecialchars($error); ?></div>
-        <?php endif; ?>
-        <a href="../index.php" class="back-link">← Try Again</a>
-    </div>
-</body>
-</html>
+if ($username === '' || $password === '') {
+    header("Location: login.html?error=" . urlencode("Please fill in all fields."));
+    exit();
+}
+
+$sql = "SELECT username FROM admins WHERE username = ? AND password = ?";
+$stmt = $conn->prepare($sql);
+
+if (!$stmt) {
+    header("Location: login.html?error=" . urlencode("Database error."));
+    exit();
+}
+
+$stmt->bind_param("ss", $username, $password);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result && $result->num_rows > 0) {
+    $_SESSION['username'] = $username;
+    header("Location: dashboard.html");
+} else {
+    header("Location: login.html?error=" . urlencode("Invalid username or password."));
+}
+
+$stmt->close();
+$conn->close();
+exit();
+?>

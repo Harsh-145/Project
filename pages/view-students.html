@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Students</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div class="container dashboard-container">
+        <h2>Student List</h2>
+
+        <div id="statusMessage"></div>
+        <div id="loadingMessage" class="alert alert-info">Loading students...</div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Enrollment No</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>DOB</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Room No</th>
+                        <th>Semester</th>
+                    </tr>
+                </thead>
+                <tbody id="studentsTableBody"></tbody>
+            </table>
+        </div>
+
+        <a href="dashboard.html" class="back-link">Back to Dashboard</a>
+    </div>
+
+    <script src="../assets/js/view-students.js"></script>
+</body>
+</html>

@@ -151,16 +151,44 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Update semester form validation
-    const updateSemesterForm = document.getElementById('updateSemesterForm');
-    if (updateSemesterForm) {
-        updateSemesterForm.addEventListener('submit', function(e) {
+    // Update student form validation
+    const updateStudentForm = document.getElementById('updateStudentForm');
+    if (updateStudentForm) {
+        updateStudentForm.addEventListener('submit', function(e) {
+            const phone = document.getElementById('phone')?.value.trim();
             const sem = document.getElementById('sem')?.value;
+            const dob = document.getElementById('dob')?.value;
 
-            const semValidation = FormValidator.validateSemester(sem);
-            if (!semValidation.valid) {
+            let isValid = true;
+            let errorMessages = [];
+
+            if (phone) {
+                const phoneValidation = FormValidator.validatePhone(phone);
+                if (!phoneValidation.valid) {
+                    isValid = false;
+                    errorMessages.push(phoneValidation.message);
+                }
+            }
+
+            if (sem) {
+                const semValidation = FormValidator.validateSemester(sem);
+                if (!semValidation.valid) {
+                    isValid = false;
+                    errorMessages.push(semValidation.message);
+                }
+            }
+
+            if (dob) {
+                const dateValidation = FormValidator.validateDate(dob);
+                if (!dateValidation.valid) {
+                    isValid = false;
+                    errorMessages.push(dateValidation.message);
+                }
+            }
+
+            if (!isValid) {
                 e.preventDefault();
-                alert(semValidation.message);
+                alert(errorMessages.join('\n'));
             }
         });
     }
