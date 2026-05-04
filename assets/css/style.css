@@ -66,6 +66,16 @@ select {
     transition: border-color 0.3s;
 }
 
+.no-spin {
+    -moz-appearance: textfield;
+}
+
+.no-spin::-webkit-outer-spin-button,
+.no-spin::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
