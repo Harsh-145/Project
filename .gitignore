@@ -1,0 +1,67 @@
+# Ignore Node modules and dependencies
+node_modules/
+vendor/
+
+# Ignore OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Ignore temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Ignore compiled files
+*.pyc
+*.pyo
+*.class
+
+# Ignore environment files
+.env
+.env.local
+.env.*.local
+
+# Ignore build/cache directories
+/build/
+/cache/
+/dist/
+.sass-cache/
+
+# Ignore composer lock (optional)
+# composer.lock
+
+# Session files
+/sessions/
+session_*
+
+# Database backup
+*.sql.bak
+*.sql.backup
+
+# Config files with sensitive data (optional - uncomment to use)
+# includes/config.php
+
+# Dependencies installed locally
+/lib/
+/libs/
+
+# Ignore upload directories (if added in future)
+/uploads/
+/files/
+/media/
