@@ -42,34 +42,36 @@ $conn->close();
         <?php if ($error): ?>
             <div class="alert alert-error"><?php echo htmlspecialchars($error); ?></div>
         <?php elseif (count($students) > 0): ?>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Enrollment No</th>
-                        <th>Name</th>
-                        <th>Gender</th>
-                        <th>DOB</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Room No</th>
-                        <th>Semester</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($students as $student): ?>
+            <div class="table-responsive">
+                <table>
+                    <thead>
                         <tr>
-                            <td><?php echo htmlspecialchars($student['enrollment_no']); ?></td>
-                            <td><?php echo htmlspecialchars($student['full_name']); ?></td>
-                            <td><?php echo htmlspecialchars($student['gender']); ?></td>
-                            <td><?php echo htmlspecialchars($student['dob']); ?></td>
-                            <td><?php echo htmlspecialchars($student['phone']); ?></td>
-                            <td><?php echo htmlspecialchars($student['email']); ?></td>
-                            <td><?php echo htmlspecialchars($student['room_no']); ?></td>
-                            <td><?php echo htmlspecialchars($student['sem']); ?></td>
+                            <th>Enrollment No</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>DOB</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Room No</th>
+                            <th>Semester</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($students as $student): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($student['enrollment_no']); ?></td>
+                                <td><?php echo htmlspecialchars($student['full_name']); ?></td>
+                                <td><?php echo htmlspecialchars($student['gender']); ?></td>
+                                <td><?php echo htmlspecialchars($student['dob']); ?></td>
+                                <td><?php echo htmlspecialchars($student['phone']); ?></td>
+                                <td><?php echo htmlspecialchars($student['email']); ?></td>
+                                <td><?php echo htmlspecialchars($student['room_no']); ?></td>
+                                <td><?php echo htmlspecialchars($student['sem']); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php else: ?>
             <div class="alert alert-info">No students found in the system.</div>
         <?php endif; ?>

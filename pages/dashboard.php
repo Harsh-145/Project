@@ -31,9 +31,9 @@ if (!isset($_SESSION['username'])) {
                 <span>See all student records</span>
             </a>
 
-            <a href="update-semester.php" class="nav-link">
-                <strong>📚 Update Semester</strong>
-                <span>Modify student semester</span>
+            <a href="update-student.php" class="nav-link">
+                <strong>✏️ Update Student Info</strong>
+                <span>Modify student details</span>
             </a>
 
             <a href="delete-student.php" class="nav-link">
